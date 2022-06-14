@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "756826723210",
+    "project_id": "aloanmini",
+    "storage_bucket": "aloanmini.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756826723210:android:e2cbd2bc78b523cf342e73",
+        "android_client_info": {
+          "package_name": "com.example.aloanmini"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756826723210-nhojrh61fh4i70bviukpcb5s9hdgkpsr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvhJq1L3Oja_Pd_GKD-qHng17skeoLkbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756826723210-nhojrh61fh4i70bviukpcb5s9hdgkpsr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
