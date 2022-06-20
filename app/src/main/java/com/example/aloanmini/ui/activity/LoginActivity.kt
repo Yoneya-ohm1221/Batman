@@ -15,21 +15,23 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.FirebaseDatabase
 import com.example.aloanmini.ui.activity.MainActivity as MainActivity1
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
     lateinit var mAuth: FirebaseAuth
+    lateinit var loading: Loading
 
     //google
     lateinit var mGoogleSignInClient: GoogleSignInClient
-    val Req_Code: Int = 123
+    private val Req_Code: Int = 123
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        loading = Loading(this)
         //google
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -60,13 +62,19 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginWithEmailPassword(email: String, password: String) {
-        Loading.setProgressDialog(this).show()
+        loading.show()
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful) {
+                addUserToDatabase(
+                    uid = mAuth.currentUser!!.uid,
+                    name = mAuth.currentUser!!.displayName!!,
+                    email = mAuth.currentUser!!.email!!
+                )
                 val intent = Intent(this, MainActivity1::class.java)
                 startActivity(intent)
                 finish()
             } else {
+                loading.dismiss()
                 Toast.makeText(this, "signInWithEmail:failure", Toast.LENGTH_SHORT).show()
             }
         }
@@ -87,22 +95,27 @@ class LoginActivity : AppCompatActivity() {
                     updateUI(account)
                 }
             } catch (e: ApiException) {
-                Loading.setProgressDialog(this).dismiss()
+                loading.dismiss()
                 Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun updateUI(account: GoogleSignInAccount) {
-        Loading.setProgressDialog(this).show()
+        loading.show()
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         mAuth.signInWithCredential(credential).addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                addUserToDatabase(
+                    uid = mAuth.currentUser!!.uid,
+                    name = mAuth.currentUser!!.displayName!!,
+                    email = mAuth.currentUser!!.email!!
+                )
                 val intent = Intent(this, MainActivity1::class.java)
                 startActivity(intent)
                 finish()
             } else {
-                Loading.setProgressDialog(this).dismiss()
+                loading.dismiss()
             }
         }
     }
@@ -116,4 +129,13 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    private fun addUserToDatabase(uid: String, name: String, email: String) {
+        val database = FirebaseDatabase.getInstance()
+        var databaseReference = database.reference.child("user")
+        databaseReference.child(uid).child("uid").setValue(uid)
+        databaseReference.child(uid).child("name").setValue(name)
+        databaseReference.child(uid).child("email").setValue(email)
+    }
+
 }

@@ -3,16 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/chatFragment2">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.aloanmini.ui.fragment.homePager.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_loanFragment"
+            app:destination="@id/loanFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myAccountFragment"
-        android:name="com.example.aloanmini.ui.fragment.MyAccountFragment"
+        android:name="com.example.aloanmini.ui.fragment.myAccount.MyAccountFragment"
         android:label="fragment_my_account"
         tools:layout="@layout/fragment_my_account" />
     <fragment
@@ -20,4 +24,38 @@
         android:name="com.example.aloanmini.ui.fragment.SummaryFragment"
         android:label="fragment_summary"
         tools:layout="@layout/fragment_summary" />
+    <fragment
+        android:id="@+id/myBorrowerFragment"
+        android:name="com.example.aloanmini.ui.fragment.homePager.my_borrower.MyBorrowerFragment"
+        android:label="fragment_my_borrower"
+        tools:layout="@layout/fragment_my_borrower" />
+    <fragment
+        android:id="@+id/myDueFragment"
+        android:name="com.example.aloanmini.ui.fragment.homePager.MyDueFragment"
+        android:label="fragment_my_due"
+        tools:layout="@layout/fragment_my_due" />
+    <fragment
+        android:id="@+id/finishFragment"
+        android:name="com.example.aloanmini.ui.fragment.homePager.FinishFragment"
+        android:label="fragment_finish"
+        tools:layout="@layout/fragment_finish" />
+    <fragment
+        android:id="@+id/loanFragment"
+        android:name="com.example.aloanmini.ui.fragment.LoanFragment"
+        android:label="fragment_loan"
+        tools:layout="@layout/fragment_loan" />
+    <fragment
+        android:id="@+id/chatFragment2"
+        android:name="com.example.aloanmini.ui.fragment.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chatFragment2_to_findUserFragment"
+            app:destination="@id/findUserFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/findUserFragment"
+        android:name="com.example.aloanmini.ui.fragment.findUser.FindUserFragment"
+        android:label="fragment_find_user"
+        tools:layout="@layout/fragment_find_user" />
 </navigation>

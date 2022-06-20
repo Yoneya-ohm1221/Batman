@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.homePager.MyBorrowerFragment">
+    tools:context=".ui.fragment.findUser.FindUserFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="myLoaner" />
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

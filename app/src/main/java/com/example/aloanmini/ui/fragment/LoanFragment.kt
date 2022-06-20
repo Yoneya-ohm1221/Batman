@@ -1,22 +1,22 @@
 package com.example.aloanmini.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import com.example.aloanmini.R
-import com.example.aloanmini.databinding.FragmentSummaryBinding
+import androidx.fragment.app.Fragment
+import com.example.aloanmini.databinding.FragmentLoanBinding
+import com.google.firebase.auth.FirebaseAuth
 
-class SummaryFragment : Fragment() {
-    lateinit var binding: FragmentSummaryBinding
+
+class LoanFragment : Fragment() {
+    lateinit var binding: FragmentLoanBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSummaryBinding.inflate(layoutInflater,container,false)
+        binding = FragmentLoanBinding.inflate(layoutInflater,container,false)
         return binding.root
     }
 
@@ -24,6 +24,5 @@ class SummaryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
     }
-
 
 }

@@ -7,6 +7,7 @@
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/layout/activity_login.xml" value="0.3333333333333333" />
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/layout/activity_register.xml" value="0.3671875" />
+        <entry key="..\:/project/android studio/AloanMini/app/src/main/res/layout/fragment_add_borrower.xml" value="0.296195652173913" />
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/layout/fragment_finish.xml" value="0.14666666666666667" />
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/layout/fragment_my_account.xml" value="0.338768115942029" />
@@ -16,6 +17,14 @@
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/layout/loading.xml" value="0.20989583333333334" />
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/layout/tab_view.xml" value="0.14666666666666667" />
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/menu/bottom_menu.xml" value="0.3671875" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/activity_main.xml" value="0.2911458333333333" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_add_borrower.xml" value="0.3333333333333333" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_chat.xml" value="0.296195652173913" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_loan.xml" value="0.2911458333333333" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_my_account.xml" value="0.296195652173913" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_my_borrower.xml" value="0.2911458333333333" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_my_due.xml" value="0.2911458333333333" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/menu/bottom_menu.xml" value="0.29791666666666666" />
       </map>
     </option>
   </component>

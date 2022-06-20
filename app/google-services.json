@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "756826723210",
+    "firebase_url": "https://aloanmini-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "aloanmini",
     "storage_bucket": "aloanmini.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "756826723210-af4mrot8h6t0eg3sdsosj789vpss3hqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aloanmini",
+            "certificate_hash": "cf59f15eff1c82f5a0a5e09c56bad9c50c991d75"
+          }
+        },
         {
           "client_id": "756826723210-nhojrh61fh4i70bviukpcb5s9hdgkpsr.apps.googleusercontent.com",
           "client_type": 3

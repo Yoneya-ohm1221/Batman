@@ -1,22 +1,23 @@
-package com.example.aloanmini.ui.fragment
+package com.example.aloanmini.ui.fragment.homePager.my_borrower
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.aloanmini.R
-import com.example.aloanmini.databinding.FragmentSummaryBinding
+import com.example.aloanmini.databinding.FragmentMyBorrowerBinding
 
-class SummaryFragment : Fragment() {
-    lateinit var binding: FragmentSummaryBinding
+
+class MyBorrowerFragment : Fragment() {
+    private lateinit var binding: FragmentMyBorrowerBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSummaryBinding.inflate(layoutInflater,container,false)
+        binding = FragmentMyBorrowerBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -24,6 +25,4 @@ class SummaryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
     }
-
-
 }

@@ -1,35 +1,36 @@
-package com.example.aloanmini.ui.fragment
+package com.example.aloanmini.ui.fragment.myAccount
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.aloanmini.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.aloanmini.databinding.FragmentMyAccountBinding
 import com.example.aloanmini.ui.activity.LoginActivity
+import com.example.aloanmini.ui.models.User
+import com.example.aloanmini.ui.utill.Resource
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 
 class MyAccountFragment : Fragment() {
     lateinit var binding: FragmentMyAccountBinding
-    lateinit var user: FirebaseUser
-    private lateinit var mAuth : FirebaseAuth
+    private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInOptions: GoogleSignInOptions
     private lateinit var googleSignInClient: GoogleSignInClient
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = FragmentMyAccountBinding.inflate(layoutInflater,container,false)
+        binding = FragmentMyAccountBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -37,12 +38,10 @@ class MyAccountFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        user = FirebaseAuth.getInstance().currentUser!!
         mAuth = FirebaseAuth.getInstance()
         googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build()
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), googleSignInOptions)
 
-        binding.txtuuid.text = "uid : "+ user.uid
         binding.btnlogout.setOnClickListener {
             mAuth.signOut()
             googleSignInClient.signOut().addOnCompleteListener {
@@ -51,6 +50,22 @@ class MyAccountFragment : Fragment() {
                 requireActivity().finish()
             }
         }
+
+        userViewModel.user.observe(viewLifecycleOwner) {
+            when(it){
+                is Resource.Loading ->{
+
+                }
+                is Resource.Success ->{
+                    updateUi(it.data!!)
+                }
+            }
+        }
+    }
+
+    private fun updateUi(user: User){
+        binding.txtuuid.text = user.name
+
     }
 
 }
