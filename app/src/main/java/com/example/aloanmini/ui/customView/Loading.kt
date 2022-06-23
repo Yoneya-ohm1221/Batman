@@ -17,9 +17,7 @@ class Loading( context: Context){
     }
 
     fun show(){
-        try {
             dialog.show()
-        }catch (e:Exception){}
     }
 
     fun dismiss(){

@@ -9,7 +9,7 @@ import com.google.firebase.ktx.Firebase
 class UserRepository {
 
     suspend fun getUser(): User {
-        var user: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
+        val user: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
         return User(
             id = user.uid,
             name = user.displayName.toString(),

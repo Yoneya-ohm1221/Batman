@@ -26,7 +26,7 @@ class ChatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.imageView.setOnClickListener {
-            findNavController().navigate(R.id.action_chatFragment2_to_findUserFragment)
+            findNavController().navigate(ChatFragmentDirections.actionChatFragment2ToFindUserFragment())
         }
     }
 

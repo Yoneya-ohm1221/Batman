@@ -5,16 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.aloanmini.R
+import androidx.fragment.app.viewModels
+
 import com.example.aloanmini.databinding.FragmentFindUserBinding
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.example.aloanmini.ui.utill.Resource
 
 
 class FindUserFragment : Fragment() {
     lateinit var binding: FragmentFindUserBinding
+    private val viewModel: FindUserViewModel by viewModels()
+    lateinit var adapter: FindUserAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,20 +26,32 @@ class FindUserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        adapter = FindUserAdapter()
+        binding.recyclerView.adapter = adapter
+        binding.back.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+        setUi()
     }
 
-    fun getdata(){
-        val refFeatured1 = FirebaseDatabase.getInstance().getReference("user").limitToFirst(50)
-        refFeatured1!!.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
+    private fun setUi() {
+        viewModel.loading.observe(viewLifecycleOwner){
+            when(it) {
+                is Resource.Loading ->{
+                    binding.viewFlipper.displayedChild = 1
+                }
 
+                is Resource.Success ->{
+                    binding.viewFlipper.displayedChild = 0
+                }
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+        }
 
-        })
+        viewModel.users.observe(viewLifecycleOwner){
+            adapter.submitList(it)
+        }
     }
+
+
 }

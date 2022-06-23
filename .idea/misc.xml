@@ -18,12 +18,21 @@
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/layout/tab_view.xml" value="0.14666666666666667" />
         <entry key="..\:/project/android studio/AloanMini/app/src/main/res/menu/bottom_menu.xml" value="0.3671875" />
         <entry key="..\:/project/android studio/batman/app/src/main/res/layout/activity_main.xml" value="0.2911458333333333" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/card_chat_receiver.xml" value="0.22" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/card_chat_sender.xml" value="0.14666666666666667" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/card_chats.xml" value="0.296195652173913" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/card_users.xml" value="0.3333333333333333" />
         <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_add_borrower.xml" value="0.3333333333333333" />
         <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_chat.xml" value="0.296195652173913" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_find_user.xml" value="0.14666666666666667" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_finish.xml" value="0.296195652173913" />
         <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_loan.xml" value="0.2911458333333333" />
-        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_my_account.xml" value="0.296195652173913" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_my_account.xml" value="0.4839718530101642" />
         <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_my_borrower.xml" value="0.2911458333333333" />
         <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_my_due.xml" value="0.2911458333333333" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/fragment_room_chat.xml" value="0.3333333333333333" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/loading.xml" value="0.2484375" />
+        <entry key="..\:/project/android studio/batman/app/src/main/res/layout/test.xml" value="0.29375" />
         <entry key="..\:/project/android studio/batman/app/src/main/res/menu/bottom_menu.xml" value="0.29791666666666666" />
       </map>
     </option>

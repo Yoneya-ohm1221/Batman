@@ -25,39 +25,18 @@ class LoginActivity : AppCompatActivity() {
 
     //google
     lateinit var mGoogleSignInClient: GoogleSignInClient
-    private val Req_Code: Int = 123
+    private val REQ_CODE: Int = 123
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        loading = Loading(this)
-        //google
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
         mAuth = FirebaseAuth.getInstance();
-
-        binding.btnlogin.setOnClickListener {
-            val email = binding.editemail.text
-            val password = binding.editpas.text
-            if (email.toString().isNotEmpty() && password.toString().isNotEmpty()) {
-                loginWithEmailPassword(email = email.toString(), password = password.toString())
-            } else {
-                Toast.makeText(this, "signInWithEmail:failure", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        binding.googleLoginButton.setOnClickListener {
-            loginWithGoogle()
-        }
-
-        binding.btnregislogin.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+        val user = mAuth.currentUser
+        if (user != null) {
+            val intent = Intent(this, MainActivity1::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -70,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
                     name = mAuth.currentUser!!.displayName!!,
                     email = mAuth.currentUser!!.email!!
                 )
+                loading.dismiss()
                 val intent = Intent(this, MainActivity1::class.java)
                 startActivity(intent)
                 finish()
@@ -82,12 +62,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginWithGoogle() {
         val signInIntent: Intent = mGoogleSignInClient.signInIntent
-        startActivityForResult(signInIntent, Req_Code)
+        startActivityForResult(signInIntent, REQ_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == Req_Code) {
+        if (requestCode == REQ_CODE) {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account: GoogleSignInAccount? = task.getResult(ApiException::class.java)
@@ -111,6 +91,7 @@ class LoginActivity : AppCompatActivity() {
                     name = mAuth.currentUser!!.displayName!!,
                     email = mAuth.currentUser!!.email!!
                 )
+                loading.dismiss()
                 val intent = Intent(this, MainActivity1::class.java)
                 startActivity(intent)
                 finish()
@@ -120,13 +101,33 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        var user = mAuth.currentUser
-        if (user != null) {
-            val intent = Intent(this, MainActivity1::class.java)
+    override fun onStart() {
+        super.onStart()
+        loading = Loading(this)
+        //google
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        binding.btnlogin.setOnClickListener {
+            val email = binding.editemail.text
+            val password = binding.editpas.text
+            if (email.toString().isNotEmpty() && password.toString().isNotEmpty()) {
+                loginWithEmailPassword(email = email.toString(), password = password.toString())
+            } else {
+                Toast.makeText(this, "signInWithEmail:failure", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.googleLoginButton.setOnClickListener {
+            loginWithGoogle()
+        }
+
+        binding.btnregislogin.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 

@@ -9,5 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="red">#C50000</color>
+    <color name="gray">#D6D6D6</color>
+    <color name="red_chat">#FF6363</color>
     <color name="defaultColor">#A5A5A5</color>
 </resources>
